@@ -4,6 +4,7 @@ import { StyledLink } from "./StyledLink";
 import { UserContext } from "../User/UserContext";
 
 export const Header = ({ mode }) => {
+  
   const { updateUser } = useContext(UserContext);
 
   const handleLogout = () => {

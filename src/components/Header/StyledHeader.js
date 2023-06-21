@@ -18,9 +18,13 @@ export const StyledHeader = styled.header`
   max-width: 369px;
   height: 100%;
   background-color: ${Theme.colors.grey4};
-  margin: 77px auto;
+  margin: 77px auto 35px;
   text-align: center;
+  
 
+  @media(max-width:768px){
+    padding: 0 15px 0 15px;
+  }
   ${(props) => props.mode === "register" && HeaderRegister}
   ${(props) => props.mode === "home" && HeaderHomePage}
 `;

@@ -8,6 +8,7 @@ export const StyledForm = styled.form`
   margin: 0 auto;
   padding: 42px 22px 28px;
   border-radius: 4px;
+  margin-bottom: 28px;
 
   h2 {
     color: ${Theme.colors.grey0};

@@ -10,6 +10,11 @@ export const StyledDivContainerHome = styled.div`
     color: ${Theme.colors.grey0};
     font-size: 18px;
     font-weight: 700;
+
+    
+    @media (max-width:768px) {
+      display: none;
+    }
   }
 
   p {
@@ -17,5 +22,7 @@ export const StyledDivContainerHome = styled.div`
     font-size: 16px;
     font-weight: 400;
     color: #ffffffff;
+    padding: 0 12px;
+
   }
 `;

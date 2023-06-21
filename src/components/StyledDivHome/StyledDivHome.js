@@ -6,7 +6,7 @@ export const StyledDivHome = styled.div`
   height: 118px;
   border-bottom: 1px solid ${Theme.colors.grey3};
   border-top: 1px solid ${Theme.colors.grey3};
-
+  
   div:first-child {
     display: flex;
     justify-content: space-between;
@@ -15,11 +15,25 @@ export const StyledDivHome = styled.div`
     max-width: 768px;
     margin: 0 auto;
 
+    @media (max-width:768px){
+      flex-direction: column;
+      justify-content: center;
+      align-items:flex-start;
+      gap: 10px;
+
+      h3{
+        padding: 0 12px;
+
+      }
+      
+    }
+    
     h2 {
       color: ${Theme.colors.grey0};
       text-align: center;
       font-size: 18px;
       font-weight: 700;
+      padding: 0 12px;
     }
 
     h3 {
@@ -29,5 +43,7 @@ export const StyledDivHome = styled.div`
       color: ${Theme.colors.grey1};
       text-align: center;
     }
+
+      
   }
 `;

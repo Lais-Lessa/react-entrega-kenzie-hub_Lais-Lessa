@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Input } from "../../components/Input/Input";
 import { zodResolver } from "@hookform/resolvers/zod/dist/zod";
 import { StyledIcon } from "../../styles/StyledIcon";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
@@ -15,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../components/User/UserContext";
 import { api } from "../services/Api";
 import { StyledToasty } from "../../styles/StyledToasty";
+import { Input } from "../../components/Input/Input";
 
 export const Login = () => {
   const [toastStatus, setToastStatus] = useState(false);
@@ -52,6 +52,7 @@ export const Login = () => {
     }
   };
 
+  
   useEffect(() => {
     if (toastStatus) {
       const timeout = setTimeout(() => {
