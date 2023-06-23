@@ -13,6 +13,22 @@ const PrimaryButton = css`
   background-color: ${Theme.colors.colorPrimary};
   margin-top: 24px;
 `;
+
+const SecondaryButton = css`
+  width: 30%;
+  max-width: 98px;
+  height: 48px;
+  background-color: ${Theme.colors.grey1};
+  margin: 0;
+`;
+const SecondaryButtonDisabled = css`
+  width: 70%;
+  max-width: 204px;
+  height: 48px;
+  background-color: ${Theme.colors.colorPrimaryNegative};
+  margin: 0;
+`;
+
 export const StyledSubmitBtn = styled.button`
   border-radius: 4px;
   padding: 0 16px;
@@ -29,4 +45,8 @@ export const StyledSubmitBtn = styled.button`
   ${(props) => props.mode === "primary" && PrimaryButton};
 
   ${(props) => props.mode === "disabled" && DisabledButton};
+
+  ${(props) => props.mode === "secondary" && SecondaryButton};
+
+  ${(props) => props.mode === "secondaryDisabled" && SecondaryButtonDisabled};
 `;

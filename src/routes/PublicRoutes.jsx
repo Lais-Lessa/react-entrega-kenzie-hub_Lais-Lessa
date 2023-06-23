@@ -1,24 +1,23 @@
-import { useContext, useEffect } from "react"
-import { UserContext } from "../components/User/UserContext"
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../providers/User/UserContext";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export const PublicRoutes = () => {
-    const navigate = useNavigate()
-    const token = localStorage.getItem("@TOKEN")
+  const navigate = useNavigate();
+  const token = localStorage.getItem("@TOKEN");
 
-    useEffect(()=>{
-        if(token){
-            navigate("/HomePage")
-        }
-    },[token])
-
-    if(token){
-        return (
-            <div>
-                <span>Carregando...</span>
-            </div>
-        )
+  useEffect(() => {
+    if (token) {
+      navigate("/HomePage");
     }
-    return <Outlet/>
+  }, [token]);
 
-}
+  if (token) {
+    return (
+      <div>
+        <span>Carregando...</span>
+      </div>
+    );
+  }
+  return <Outlet />;
+};

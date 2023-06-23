@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { StyledHeader } from "./StyledHeader";
 import { StyledLink } from "./StyledLink";
-import { UserContext } from "../User/UserContext";
+import { UserContext } from "../../../providers/User/UserContext";
 
 export const Header = ({ mode }) => {
-  
   const { updateUser } = useContext(UserContext);
 
   const handleLogout = () => {

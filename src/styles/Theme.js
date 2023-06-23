@@ -10,5 +10,6 @@ export const Theme = {
     grey4: "#121214",
     success: "#3FE864",
     negative: "#E83F5B",
+    white: "#FFFFFF",
   },
 };

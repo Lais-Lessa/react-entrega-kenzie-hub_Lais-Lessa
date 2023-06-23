@@ -11,3 +11,12 @@ export const StyledIcon = styled(FontAwesomeIcon)`
   bottom: 16px;
   right: 16px;
 `;
+
+export const StyledPlusIcon = styled(FontAwesomeIcon)`
+  font-size: 12px;
+  color: white;
+  background-color: ${Theme.colors.grey2};
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+`;

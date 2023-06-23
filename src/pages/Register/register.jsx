@@ -6,8 +6,10 @@ export const Register = () => {
   return (
     <>
       <Header mode={"register"} />
-      <ToastContainer />
-      <Form />
+      <main>
+        <ToastContainer />
+        <Form />
+      </main>
     </>
   );
 };

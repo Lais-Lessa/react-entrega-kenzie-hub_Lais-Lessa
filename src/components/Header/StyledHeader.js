@@ -20,9 +20,8 @@ export const StyledHeader = styled.header`
   background-color: ${Theme.colors.grey4};
   margin: 77px auto 35px;
   text-align: center;
-  
 
-  @media(max-width:768px){
+  @media (max-width: 768px) {
     padding: 0 15px 0 15px;
   }
   ${(props) => props.mode === "register" && HeaderRegister}

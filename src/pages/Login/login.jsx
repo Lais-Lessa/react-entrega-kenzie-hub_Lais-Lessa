@@ -11,7 +11,7 @@ import { StyledSubmitBtn } from "../../components/Form/StyledSubmitBtn";
 import { loginSchema } from "../../schemas/loginSchema";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../components/User/UserContext";
+import { UserContext } from "../../../providers/User/UserContext";
 import { api } from "../services/Api";
 import { StyledToasty } from "../../styles/StyledToasty";
 import { Input } from "../../components/Input/Input";
@@ -52,7 +52,6 @@ export const Login = () => {
     }
   };
 
-  
   useEffect(() => {
     if (toastStatus) {
       const timeout = setTimeout(() => {
@@ -68,37 +67,39 @@ export const Login = () => {
       <StyledHeader>
         <img src="/Logo.svg" alt="Logotipo Kenziehub" />
       </StyledHeader>
-      <StyledToasty />
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <h2>Login</h2>
-        <Input
-          type={"email"}
-          label={"E-mail"}
-          register={register("email")}
-          placeholder={"Digite aqui seu e-mail"}
-        />
-        {errors.email && <p>{errors.email.message}</p>}
-        <StyledIconWrapper>
+      <main>
+        <StyledToasty />
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <h2>Login</h2>
           <Input
-            type={showPass ? "text" : "password"}
-            label={"Senha"}
-            register={register("password")}
-            placeholder={"Digite aqui sua senha"}
+            type={"email"}
+            label={"E-mail"}
+            register={register("email")}
+            placeholder={"Digite aqui seu e-mail"}
           />
-          {errors.password && <p>{errors.password.message}</p>}
-          <StyledIcon
-            onClick={handleShowPass}
-            icon={showPass ? faEye : faEyeSlash}
-          />
-        </StyledIconWrapper>
-        <StyledSubmitBtn mode={"primary"} type="submit">
-          Entrar
-        </StyledSubmitBtn>
-        <h3>Ainda não possui uma conta?</h3>
-        <StyledAnchor to={"/Register"} mode={"secondary"} type="button">
-          Cadastre-se
-        </StyledAnchor>
-      </StyledForm>
+          {errors.email && <p>{errors.email.message}</p>}
+          <StyledIconWrapper>
+            <Input
+              type={showPass ? "text" : "password"}
+              label={"Senha"}
+              register={register("password")}
+              placeholder={"Digite aqui sua senha"}
+            />
+            {errors.password && <p>{errors.password.message}</p>}
+            <StyledIcon
+              onClick={handleShowPass}
+              icon={showPass ? faEye : faEyeSlash}
+            />
+          </StyledIconWrapper>
+          <StyledSubmitBtn mode={"primary"} type="submit">
+            Entrar
+          </StyledSubmitBtn>
+          <h3>Ainda não possui uma conta?</h3>
+          <StyledAnchor to={"/Register"} mode={"secondary"} type="button">
+            Cadastre-se
+          </StyledAnchor>
+        </StyledForm>
+      </main>
     </>
   );
 };
