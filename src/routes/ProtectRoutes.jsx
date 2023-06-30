@@ -3,27 +3,24 @@ import { UserContext } from "../../providers/User/UserContext";
 import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../pages/services/Api";
+import { TechContext } from "../../providers/TechContext";
 
 export const ProtectRoutes = () => {
   const { user, updateUser } = useContext(UserContext);
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
-
+const { setTech } = useContext(TechContext)
+  
   useEffect(() => {
     const checkUser = async () => {
-      if (!user) {
-        try {
-          const { data } = await api.get("/profile", {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          updateUser(data);
-        } catch (error) {
-          navigate("/");
-          toast.error("Usúario não autorizado", {
-            autoClose: 800,
-          });
+      if(!user){
+        try{
+        const { data } =  await api.get("/profile")
+        setTech(data.techs)
+        updateUser(data)
+        }catch{
+          navigate("/")
+          localStorage.removeItem("@TOKEN")
         }
       }
     };
@@ -39,5 +36,5 @@ export const ProtectRoutes = () => {
     );
   }
 
-  return <Outlet />;
+  return <Outlet />; 
 };

@@ -15,7 +15,7 @@ export const ModalForm = () => {
   const { handleSubmit, register } = methods;
   const { setIsOpenModal, updateUser, setIsOpenEditModal, isOpenEditModal } =
     useContext(UserContext);
-  const { tech } = useContext(TechContext);
+  const { tech, setTech } = useContext(TechContext);
 
   const onSubmit = async (formData) => {
     const { status } = formData;
@@ -39,6 +39,7 @@ export const ModalForm = () => {
       const response = await api.get("/profile");
       const data = response.data;
       updateUser(data);
+      setTech(data.techs)
     } catch (error) {
       toast.error("Ops! algo deu errado...", {
         autoClose: 950,
@@ -56,6 +57,7 @@ export const ModalForm = () => {
       setIsOpenEditModal(false);
       const { data } = await api.get("/profile");
       updateUser(data);
+      setTech(data.techs)
     } catch (error) {
       throw new Error("Erro na requisição: " + error.message);
     }
@@ -69,8 +71,7 @@ export const ModalForm = () => {
           label={"Nome"}
           register={register("title")}
           disabled={isOpenEditModal ? true : false}
-          placeholder={"Digite o nome da tecnologia"}
-          value={isOpenEditModal ? tech.title : null}
+          placeholder={isOpenEditModal ? tech.title : "Digite o título da tecnologia"}
         />
         <SelectComponent
           label={"Selecionar status"}

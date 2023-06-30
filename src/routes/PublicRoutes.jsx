@@ -1,16 +1,22 @@
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../providers/User/UserContext";
 import { Outlet, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const PublicRoutes = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("@TOKEN");
 
-  useEffect(() => {
-    if (token) {
-      navigate("/HomePage");
+  useEffect(()=>{
+  
+    const isAuth = () =>{
+      if(token){
+        navigate("/HomePage")
+      }
     }
-  }, [token]);
+    isAuth()
+
+  }, [token])
 
   if (token) {
     return (

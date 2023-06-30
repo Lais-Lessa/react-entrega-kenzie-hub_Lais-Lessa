@@ -12,16 +12,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { StyledNewTechDiv } from "./TechSection/StyledTech/StyledNewTechDiv";
 import { ModalHomePage } from "./Modal/ModalHomePage";
 import { ToastContainer } from "react-toastify";
+import { TechContext } from "../../../providers/TechContext";
 
 export const HomePage = () => {
   const navigate = useNavigate();
 
   const { user, setIsOpenModal, isOpenModal, isOpenEditModal } =
     useContext(UserContext);
-
-  const listTech = user.techs;
-
-  useEffect(() => {}, [user]);
+const { tech } = useContext(TechContext)
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -44,7 +42,7 @@ export const HomePage = () => {
         <StyledPlusIcon icon={faPlus} onClick={openModal} />
       </StyledNewTechDiv>
       <StyledSpanHome>
-        {listTech.length === 0 ? (
+        {tech.length === 0 ? (
           <Title3>Ainda não possui nenhuma tecnologia cadastrada </Title3>
         ) : (
           <TechSection />

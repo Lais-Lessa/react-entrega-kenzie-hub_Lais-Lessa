@@ -8,6 +8,7 @@ const TechList = () => {
   const { user, setIsOpenEditModal } = useContext(UserContext);
   const listTech = user.techs;
   const { setTech } = useContext(TechContext);
+  
   const handleEditModal = (item) => {
     setTech(item);
     setIsOpenEditModal(true);

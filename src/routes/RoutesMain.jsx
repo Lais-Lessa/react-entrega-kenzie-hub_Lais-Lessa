@@ -13,11 +13,11 @@ export const RoutesMain = () => {
       <ProviderTech>
         <Routes>
           <Route element={<ProtectRoutes />}>
-            <Route path="/HomePage" element={<HomePage />} />
+            <Route index path="/HomePage" element={<HomePage />} />
           </Route>
           <Route element={<PublicRoutes />}>
             <Route path="/Register" element={<Register />} />
-            <Route path="/" element={<Login />} />
+            <Route index path="/" element={<Login />} />
           </Route>
         </Routes>
       </ProviderTech>
