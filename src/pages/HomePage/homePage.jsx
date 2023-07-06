@@ -15,11 +15,12 @@ import { ToastContainer } from "react-toastify";
 import { TechContext } from "../../../providers/TechContext";
 
 export const HomePage = () => {
+  
   const navigate = useNavigate();
 
   const { user, setIsOpenModal, isOpenModal, isOpenEditModal } =
-    useContext(UserContext);
-const { tech } = useContext(TechContext)
+  useContext(UserContext);
+  const { tech } = useContext(TechContext)
 
   const openModal = () => {
     setIsOpenModal(true);

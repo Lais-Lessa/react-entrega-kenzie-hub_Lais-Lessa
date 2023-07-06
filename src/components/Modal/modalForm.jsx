@@ -15,7 +15,7 @@ export const ModalForm = () => {
   const { handleSubmit, register } = methods;
   const { setIsOpenModal, updateUser, setIsOpenEditModal, isOpenEditModal } =
     useContext(UserContext);
-  const { tech, setTech } = useContext(TechContext);
+  const { tech, setTech, handleDelete } = useContext(TechContext);
 
   const onSubmit = async (formData) => {
     const { status } = formData;
@@ -48,20 +48,6 @@ export const ModalForm = () => {
     }
   };
 
-  const handleDelete = async () => {
-    try {
-      await api.delete(`/users/techs/${tech.id}`);
-      toast.error(`Você removeu a tecnologia ${tech.title}`, {
-        autoClose: 950,
-      });
-      setIsOpenEditModal(false);
-      const { data } = await api.get("/profile");
-      updateUser(data);
-      setTech(data.techs)
-    } catch (error) {
-      throw new Error("Erro na requisição: " + error.message);
-    }
-  };
 
   return (
     <FormProvider {...methods}>

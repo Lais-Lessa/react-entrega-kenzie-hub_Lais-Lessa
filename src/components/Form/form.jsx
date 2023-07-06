@@ -28,12 +28,12 @@ export const Form = () => {
     try {
       await api.post("/users", formData);
       toast.success("Conta criada com sucesso", {
-        autoClose: 600,
+      autoClose: 600,
       });
       setToastStatus(true);
     } catch (error) {
       toast.error("Ops! Algo deu errado", {
-        autoClose: 600,
+      autoClose: 600,
       });
     } finally {
       reset();
