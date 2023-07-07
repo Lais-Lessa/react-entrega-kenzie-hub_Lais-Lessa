@@ -5,20 +5,25 @@ import { SelectComponent } from "../Select/selectComponent";
 import { StyledModalForm } from "./StyledModalForm";
 import { api } from "../../pages/services/Api";
 import { useContext } from "react";
-import { UserContext } from "../../../providers/User/UserContext";
 import { StyledButtonWrapper } from "../../pages/HomePage/TechSection/StyledTech/StyledButtonWrapper";
-import { TechContext } from "../../../providers/TechContext";
 import { toast } from "react-toastify";
+import { UserContext } from "../../providers/User/UserContext";
+import { TechContext } from "../../providers/TechContext";
 
 export const ModalForm = () => {
   const methods = useForm();
+
   const { handleSubmit, register } = methods;
+
   const { setIsOpenModal, updateUser, setIsOpenEditModal, isOpenEditModal } =
     useContext(UserContext);
+    
   const { tech, setTech, handleDelete } = useContext(TechContext);
 
   const onSubmit = async (formData) => {
+
     const { status } = formData;
+
     try {
       if (isOpenEditModal) {
         await api.put(`/users/techs/${tech.id}`, { status });
@@ -36,10 +41,12 @@ export const ModalForm = () => {
           }
         );
       }
+
       const response = await api.get("/profile");
       const data = response.data;
       updateUser(data);
       setTech(data.techs)
+      
     } catch (error) {
       toast.error("Ops! algo deu errado...", {
         autoClose: 950,

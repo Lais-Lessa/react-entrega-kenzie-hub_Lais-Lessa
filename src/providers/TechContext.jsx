@@ -1,14 +1,18 @@
-import { createContext, useContext, useState } from "react";
-import { api } from "../src/pages/services/Api";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "./User/UserContext";
+import { api } from "../pages/services/Api";
 
 export const TechContext = createContext();
 
 export const ProviderTech = ({ children }) => {
+
+  const { setIsOpenEditModal, updateUser } = useContext(UserContext);
+
   const [tech, setTech] = useState([]);
-  const { setIsOpenEditModal, updateUser } = useContext(UserContext)
+
   const handleDelete = async () => {
+
     try {
       await api.delete(`/users/techs/${tech.id}`);
       toast.error(`Você removeu a tecnologia ${tech.title}`, {
@@ -17,7 +21,8 @@ export const ProviderTech = ({ children }) => {
       setIsOpenEditModal(false);
       const { data } = await api.get("/profile");
       updateUser(data);
-      setTech(data.techs)
+      setTech(data.techs);
+      
     } catch (error) {
       throw new Error("Erro na requisição: " + error.message);
     }

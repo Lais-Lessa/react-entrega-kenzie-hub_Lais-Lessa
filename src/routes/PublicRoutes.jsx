@@ -1,7 +1,5 @@
-import { useContext, useEffect } from "react";
-import { UserContext } from "../../providers/User/UserContext";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export const PublicRoutes = () => {
   const navigate = useNavigate();

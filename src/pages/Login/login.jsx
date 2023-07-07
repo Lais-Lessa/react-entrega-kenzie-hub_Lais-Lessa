@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod/dist/zod";
+import React, { useContext } from "react";
 import { StyledIcon } from "../../styles/StyledIcon";
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 import { StyledIconWrapper } from "../../styles/StyledIconWrapper";
@@ -8,59 +6,20 @@ import { StyledForm } from "../../components/Form/StyledForm";
 import { StyledHeader } from "../../components/Header/StyledHeader";
 import { StyledAnchor } from "../../components/Button/StyledButton";
 import { StyledSubmitBtn } from "../../components/Form/StyledSubmitBtn";
-import { loginSchema } from "../../schemas/loginSchema";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../providers/User/UserContext";
-import { api } from "../services/Api";
 import { StyledToasty } from "../../styles/StyledToasty";
 import { Input } from "../../components/Input/Input";
+import { UserContext } from "../../providers/User/UserContext";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "../../schemas/loginSchema";
 
 export const Login = () => {
-  const [toastStatus, setToastStatus] = useState(false);
-  const [showPass, setShowPass] = useState(false);
-  const { updateUser } = useContext(UserContext);
 
-  const handleShowPass = () => {
-    setShowPass(!showPass);
-  };
+  const { handleShowPass, onSubmit, showPass } = useContext(UserContext)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(loginSchema),
+  const { register, handleSubmit, formState: { errors }, } = useForm({
+    resolver: zodResolver (loginSchema),
   });
-
-  const navigate = useNavigate();
-
-  const onSubmit = async (formData) => {
-    try {
-      const response = await api.post("/sessions", formData);
-      updateUser(response.data.user);
-      localStorage.setItem("@USERID", response.data.user.id);
-      localStorage.setItem("@TOKEN", response.data.token);
-      toast.success("Login efetuado", {
-        autoClose: 600,
-      });
-      setToastStatus(true);
-    } catch (error) {
-      toast.error("Ops! algo deu errado", {
-        autoClose: 600,
-      });
-    }
-  };
-
-  useEffect(() => {
-    if (toastStatus) {
-      const timeout = setTimeout(() => {
-        setToastStatus(false);
-        navigate("/HomePage");
-      }, 1800);
-      return () => clearTimeout(timeout);
-    }
-  }, [toastStatus]);
 
   return (
     <>

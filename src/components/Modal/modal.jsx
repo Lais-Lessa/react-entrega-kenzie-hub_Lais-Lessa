@@ -3,7 +3,7 @@ import { StyledHeaderModal } from "./StyledHeaderModal";
 import { StyledModalContent } from "./StyledModal";
 import { StyledModalContainer } from "./StyledModalContainer";
 import { ModalForm } from "./modalForm";
-import { UserContext } from "../../../providers/User/UserContext";
+import { UserContext } from "../../providers/User/UserContext";
 
 export const Modal = () => {
   const { setIsOpenModal } = useContext(UserContext);

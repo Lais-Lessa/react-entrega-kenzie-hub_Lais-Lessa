@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../../../providers/User/UserContext";
 import { StyledModalContent } from "../../../components/Modal/StyledModal";
 import { StyledHeaderModal } from "../../../components/Modal/StyledHeaderModal";
 import { StyledModalContainer } from "../../../components/Modal/StyledModalContainer";
 import { ModalForm } from "../../../components/Modal/modalForm";
+import { UserContext } from "../../../providers/User/UserContext";
 
 export const ModalHomePage = () => {
   const { setIsOpenEditModal } = useContext(UserContext);
